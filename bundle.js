@@ -44,50 +44,19 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/*intro-sound = new Howl {
-	  src: [\sound/intro_animation_transition.mp3],
-	}
-
-	gb-sound = new Howl {
-	  src: [\sound/bg.mp3],
+	var introSound, gbSound, btn;
+	introSound = new Howl({
+	  src: ['sound/intro_animation_transition.mp3']
+	});
+	gbSound = new Howl({
+	  src: ['sound/bg.mp3'],
 	  loop: true
-	}
-
-	intro-sound.play!
-
-	do
-	  <-! set-timeout _, 5000ms
-	  gb-sound.play!
-
-	btn = new button!*/
-	var bg, intro, assetsPath, sounds;
-	bg = 'bg';
-	intro = 'intro';
-	assetsPath = 'sound/';
-	sounds = [
-	  {
-	    src: 'bg.mp3',
-	    id: bg
-	  }, {
-	    src: 'intro_animation_transition.mp3',
-	    id: intro
-	  }
-	];
-	createjs.Sound.alternateExtensions = ['mp3'];
-	createjs.Sound.addEventListener('fileload', playSound);
-	createjs.Sound.registerSounds(sounds, assetsPath);
-	function playSound(event){
-	  var instance;
-	  instance = createjs.Sound.play(intro);
-	  instance.on('complete', handleComplete, this);
-	}
-	function handleComplete(target){
-	  setTimeout(function(){
-	    createjs.Sound.play(bg, {
-	      loop: -1
-	    });
-	  }, 1000);
-	}
+	});
+	introSound.play();
+	setTimeout(function(){
+	  gbSound.play();
+	}, 5000);
+	btn = new button();
 	//# sourceMappingURL=/Users/Taphy/Documents/workspace/practice_sound/node_modules/livescript-loader/index.js!/Users/Taphy/Documents/workspace/practice_sound/ls/index.ls.map
 
 
